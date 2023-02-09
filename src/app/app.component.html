@@ -1,0 +1,23 @@
+<div
+  class="d-flex flex-column justify-content-center align-items-center"
+  style="height: 80vh"
+>
+  <div class="mb-4">
+    <h1>The decide app</h1>
+  </div>
+
+  <div [ngSwitch]="appPage.visiblePanel">
+    <app-one
+      *ngSwitchCase="'one'"
+      [appPage]="appPage"
+      (next)="handleNext($event)"
+      (hasErrors)="handleErros($event)"
+    ></app-one>
+    <app-two *ngSwitchCase="'two'" [appPage]="appPage"></app-two>
+    <app-three *ngSwitchCase="'three'" [appPage]="appPage"></app-three>
+
+    <div *ngIf="errors.show" class="alert alert-danger" role="danger">
+      {{ errors.message }}
+    </div>
+  </div>
+</div>
