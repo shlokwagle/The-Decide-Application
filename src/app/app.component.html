@@ -13,7 +13,12 @@
       (next)="handleNext($event)"
       (hasErrors)="handleErros($event)"
     ></app-one>
-    <app-two *ngSwitchCase="'two'" [appPage]="appPage"></app-two>
+    <app-two
+      *ngSwitchCase="'two'"
+      [appPage]="appPage"
+      (next)="handleNext($event)"
+      (hasErrors)="handleErros($event)"
+    ></app-two>
     <app-three *ngSwitchCase="'three'" [appPage]="appPage"></app-three>
 
     <div *ngIf="errors.show" class="alert alert-danger" role="danger">
