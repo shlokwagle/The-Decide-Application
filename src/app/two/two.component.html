@@ -4,6 +4,29 @@
     <h4>{{ appPage.question }}</h4>
   </div>
 
+  <div *ngIf="appPage.mode">
+    <input
+      type="text"
+      class="form-control mb-2"
+      placeholder="Add answer"
+      #custom
+    />
+    <button
+      type="button"
+      class="btn btn-outline-info btn-block mb-2"
+      (click)="addCustom(custom)"
+    >
+      Add
+    </button>
+    <div>
+      <span
+        *ngFor="let custom of appPage.custom"
+        class="btn btn-outline-info btn-sm mr-2 mb-2"
+        >{{ custom }}</span
+      >
+    </div>
+  </div>
+
   <div class="form-group">
     <button
       type="button"
@@ -11,6 +34,14 @@
       (click)="getResults()"
     >
       Make a decision
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-info btn-block"
+      (click)="changeMode()"
+      *ngIf="!appPage.mode"
+    >
+      I want to add my own
     </button>
   </div>
 </div>
